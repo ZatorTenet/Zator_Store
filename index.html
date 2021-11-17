@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/916a090984.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    
+    
+    <style>
+        :root{
+            --main-color: #d3ad7f;
+            --black:#12121a;
+            --bg:#010103;
+            --border:.1rem solid rgba(255, 255, 255, .3);
+        }
+        @import url('<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> ');
+        *{
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            outline: none; border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+            font-family: 'Roboto', sans-serif;
+
+        }
+        html{
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+        html::-webkit-scrollbar{
+            width: .8rem;
+        }
+        html::-webkit-scrollbar-thumb{
+            background: #fff;
+            border-radius: 5rem;
+        }
+        body{
+            background: var(--bg);
+        }
+        .header{
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 7%;
+            border-bottom: var(--border);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+        .header .logo img{
+            height: 6rem;
+            background: white;
+            border-radius: 50px;
+        }
+        .header .navbar a{
+            margin: 0 1rem;
+            font-size: 1.6rem;
+            color: #fff;
+        }
+        .header .navbar a:hover{
+            color: var(--main-color);
+            border-bottom: .1rem solid var(--main-color);
+            padding-bottom: .5rem;
+        }
+        .header .icons div{
+            color: #fff;
+            cursor: pointer;
+            font-size: 2.5rem;
+            margin-left: 2rem;
+        }
+        .header .icons div:hover{
+            color: var(--main-color);
+        }
+        .fa-bars{
+            display: none;
+        }
+        .home{
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            /*background: url(po.png) no-repeat;*/
+            background-size: cover;
+            background-position: center;
+        }
+        section{
+            padding: 2rem 7%;
+        }
+        .home .content{
+            max-width: 60rem;
+        }
+        .home .content h3{
+            font-size: 6rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        .home .content p{
+            font-size: 1.5rem;
+            font-weight: lighter;
+            line-height: 1.8;
+            padding: 1rem 0;
+            color: #eee;
+            margin-bottom: 2rem;
+        }
+        .btn{
+            color: white;
+            background: var(--main-color);
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-size: 2rem;
+        }
+        .btn:hover{
+            background: #000;
+            border: 1px solid white;
+        }
+        @media(max-width:991px){
+             html{
+                 font-size: 55%;
+             }
+             .header{
+                 padding: 1.5rem, 2rem;
+             }
+             section{
+            padding: 2rem 7%;
+            }
+        }
+        @media(max-width:1200px){
+            .container-cubo{
+                left: 5rem;
+            }
+        }
+        @media(max-width:991px){
+            .container-cubo{
+            position: relative;
+            display: flex;
+            left: 5rem;
+            perspective: 1000px;
+            perspective-origin: 50% 50%;
+        }
+            #menu-btn{
+                display: inline-block;
+            }
+            html{
+                font-size: 55%;
+            }
+            .header .navbar.active{
+                right: 0;
+            }
+            .header .navbar{
+                position: absolute;
+                top: 100%; right: -100%;
+                background: #fff;
+                width: 30rem;
+                height: calc(100vh - 9.5rem);
+            }
+            .header .navbar a{
+                display: block;
+                margin: 1.5rem;
+                color: #000;
+                padding: .5rem;
+                font-size: 2rem;
+            }
+            @media(max-width:450px){
+                html{
+                    font-size: 50%;
+                }
+            }
+        }
+        .container-cubo{
+            position: relative;
+            right: -25rem;
+            perspective: 1000px;
+            perspective-origin: 50% 50%;
+        }
+        .cubo{
+            transform-style: preserve-3d;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            animation: Loop 10s linear infinite;
+        }
+        .cubo img{
+            position: absolute;
+            width: inherit;
+        }
+        .cubo img:nth-child(1){
+            background: white;
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        .cubo img:nth-child(2){
+            background: white;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .cubo img:nth-child(3){
+            background: white;
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .cubo img:nth-child(4){
+            background: white;
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .cubo img:nth-child(5){
+            background: white;
+            transform: rotatex(90deg) translateZ(100px);
+        }
+        .cubo img:nth-child(6){
+            background: white;
+            transform: rotatex(-90deg) translateZ(100px);
+        }
+        @keyframes Loop{
+            from{
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        @media(max-width:700px){
+                .container-cubo{
+                position: absolute;
+                top: 50px;
+                right: 1.5rem;
+                perspective: 1000px;
+                perspective-origin: 50% 50%;
+            }
+            .home{
+                top: 150px;
+                position: absolute;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="https://www.facebook.com/Zator-108035338368558" class="logo">
+            <img src="logoJoni.png" alt="">
+        </a>
+
+        <nav class="navbar">
+            <a href="cat.html">Catalogo</a>
+            <a href="https://www.facebook.com/Zator-108035338368558">Facebook</a>
+            <a href="https://www.instagram.com/zator_tenet/">Instagram</a>
+            <a href="https://api.whatsapp.com/send/?phone=50258241432&text=Hola%21+me+interaso+tu+pagina+y+me+gustaria+saber+mas+%3A3&app_absent=0">whatsapp</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fab fa-facebook" id="search-btn"></div>
+            <div class="fab fa-instagram" id="cart-btn"></div>
+            <div class="fab fa-whatsapp" id="cart-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Personaliza tu plallera</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In aliquam accusantium ipsa iusto illo eum delectus! Sunt repellat error odit consequuntur ad reprehenderit consectetur dicta culpa, quisquam animi quidem excepturi.</p>
+            <a href="#" class="btn">CATALOGO!</a>
+        </div>
+        <div class="container-cubo">
+            <div class="cubo">
+                <img src="playera1.png" alt="">
+                <img src="playera6.png" alt="">
+                <img src="playera7.png" alt="">
+                <img src="playera2sf.png" alt="">
+                <img src="playera3.png" alt="">
+                <img src="playera4.png" alt="">
+            </div>
+        </div>
+    </section>
+    <script>
+        let navbar = document.querySelector('.navbar');
+        document.querySelector('#menu-btn').onclick = () =>{
+            navbar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
